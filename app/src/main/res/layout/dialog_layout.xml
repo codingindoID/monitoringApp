@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/textKetiga">
+
+    <LinearLayout
+        android:id="@+id/lay_1"
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="@color/textKedua"
+            android:textSize="24sp"
+            android:fontFamily="@font/m_bold"
+            android:text="Entri Manual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:textColor="@color/textUtama"
+            android:textSize="18sp"
+            android:fontFamily="@font/m_semibold"
+            android:text="Nomor Polisi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:id="@+id/et_nopol"
+            android:textSize="18sp"
+            android:background="@color/textKetiga"
+            android:inputType="text"
+            android:maxLines="1"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"/>
+
+        <View
+            android:background="@color/utama"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"/>
+
+    </LinearLayout>
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_below="@id/lay_1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp">-->
+
+<!--        <LinearLayout-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/batal"-->
+<!--                android:background="@color/merah"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_width="200dp"-->
+<!--                android:layout_height="match_parent">-->
+
+<!--                <TextView-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/m_bold"-->
+<!--                    android:text="Batal"-->
+<!--                    android:textColor="@color/textKetiga" />-->
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/cek"-->
+<!--                android:background="@color/kedua"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_width="200dp"-->
+<!--                android:layout_height="match_parent">-->
+
+<!--                <TextView-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/m_bold"-->
+<!--                    android:text="Cek"-->
+<!--                    android:textColor="@color/textKetiga" />-->
+
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
+
+
+</RelativeLayout>
