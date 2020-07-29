@@ -40,6 +40,7 @@
             android:inputType="text"
             android:maxLines="1"
             android:lines="1"
+            android:hint="X-0000-XX"
             android:scrollHorizontally="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

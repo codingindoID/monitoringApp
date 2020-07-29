@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             /*jika terdapat record yang belum selesai*/
                             final String id_kunjungan = response.optString("id_kunjungan");
                             al.setTitle("Selesaikan Kunjungan?")
-                                    .setIcon(R.mipmap.ic_icon)
+                                    .setIcon(R.mipmap.ic_icon_round)
                                     .setMessage("Detil :\nNomor Polisi : "+response.optString("no_pol")+
                                             "\nDriver/Pemilik  : "+response.optString("driver")+
                                             "\nTanggal Kunjungan : "+response.optString("tgl_kunjungan")+
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }else if(success.equals("2")){
                             /*cek jenis pengunjung rutin/non rutin*/
                             al.setTitle("Selesaikan Kunjungan?")
-                                    .setIcon(R.mipmap.ic_icon)
+                                    .setIcon(R.mipmap.ic_icon_round)
                                     .setMessage("Detil :\nNomor Polisi : "+response.optString("no_pol")+
                                             "\nDriver/Pemilik  : "+response.optString("pemilik")+
                                             "\nJenis : "+response.optString("jenis")+
@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onResponse(JSONObject response) {
                         androidx.appcompat.app.AlertDialog.Builder al = new androidx.appcompat.app.AlertDialog.Builder(MainActivity.this);
                         al.setTitle("Status")
-                                .setIcon(R.mipmap.ic_launcher)
+                                .setIcon(R.mipmap.ic_icon_round)
                                 .setMessage(response.optString("message"))
                                 .setPositiveButton("Tutup", new DialogInterface.OnClickListener() {
                                     @Override
@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         final String no_pol   = response.optString("no_pol");
                         if (success.equals("1")){
                             al.setTitle("Kunjungan Selesai")
-                                    .setIcon(R.mipmap.ic_icon)
+                                    .setIcon(R.mipmap.ic_icon_round)
                                     .setMessage(response.optString("message"))
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     .show();
                         }else if(success.equals("2")){
                             al.setTitle("Kunjungan Baru")
-                                    .setIcon(R.mipmap.ic_icon)
+                                    .setIcon(R.mipmap.ic_icon_round)
                                     .setMessage(
                                             "\nNomor Polisi : "+ response.optString("no_pol") +
                                                     "\nPemilik/Driver : "+response.optString("pemilik")+
@@ -272,7 +272,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     .show();
                         }else{
                             al.setTitle("Detil Kendaraan")
-                                    .setIcon(R.mipmap.ic_icon)
+                                    .setIcon(R.mipmap.ic_icon_round)
                                     .setMessage(response.optString("message"))
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
