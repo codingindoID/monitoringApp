@@ -1,7 +1,8 @@
 package com.example.monitoringapp.config;
 
 public class StringConfig {
-    public static String SERVER             = "http://192.168.43.180/monitoring/rest_api/";
+    //public static String SERVER             = "http://192.168.43.180/monitoring/rest_api/";
+    public static String SERVER             = "https://monitoring.codingindo.id/rest_api/";
 
     /*KUNJUNGAN RUTIN*/
     public static String GET_DATA             = SERVER+"get_data/";

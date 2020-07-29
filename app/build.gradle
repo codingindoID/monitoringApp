@@ -31,4 +31,5 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 }

@@ -46,13 +46,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_icon_round"
+            android:layout_marginBottom="25dp"
+            />
         <TextView
             android:textColor="@color/textUtama"
             android:textSize="16sp"
             android:fontFamily="@font/m_semibold"
-            android:text="Tentang Aplikasi"
+            android:text="@string/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <TextView
+            android:textColor="@color/textUtama"
+            android:textSize="16sp"
+            android:fontFamily="@font/m_semibold"
+            android:text="@string/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textColor="@color/textUtama"
+            android:textSize="16sp"
+            android:fontFamily="@font/m_semibold"
+            android:text="@string/created_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"/>
 
     </LinearLayout>
 
