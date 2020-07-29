@@ -75,8 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 final String str_nopol = nopol.getText().toString().toUpperCase();
-                cek_manual(str_nopol);
-                dialog.dismiss();
+                if(str_nopol.equals("")){
+                    Toast.makeText(getApplicationContext(),"Nomor Polisi Tidak boleh Kosong",Toast.LENGTH_LONG).show();
+                }else{
+                    cek_manual(str_nopol);
+                    dialog.dismiss();
+                }
             }
         });
 
@@ -107,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             /*jika terdapat record yang belum selesai*/
                             final String id_kunjungan = response.optString("id_kunjungan");
                             al.setTitle("Selesaikan Kunjungan?")
-                                    .setIcon(R.mipmap.ic_launcher)
+                                    .setIcon(R.mipmap.ic_icon)
                                     .setMessage("Detil :\nNomor Polisi : "+response.optString("no_pol")+
                                             "\nDriver/Pemilik  : "+response.optString("driver")+
                                             "\nTanggal Kunjungan : "+response.optString("tgl_kunjungan")+
@@ -126,12 +130,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         }
                                     })
                                     .create().show();
-                        }else{
+                        }else if(success.equals("2")){
+                            /*cek jenis pengunjung rutin/non rutin*/
+                            al.setTitle("Selesaikan Kunjungan?")
+                                    .setIcon(R.mipmap.ic_icon)
+                                    .setMessage("Detil :\nNomor Polisi : "+response.optString("no_pol")+
+                                            "\nDriver/Pemilik  : "+response.optString("pemilik")+
+                                            "\nJenis : "+response.optString("jenis")+
+                                            "\nMerek : "+response.optString("merek")+
+                                            "\nSeri : "+response.optString("seri"))
+                                    .setPositiveButton("Ijinkan masuk", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            ijinkan_masuk(response.optString("no_pol"));
+                                        }
+                                    })
+                                    .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    })
+                                    .create().show();
+                        }else {
                             /*AKSi input manual aktifkan dialog input driver*/
                             Intent i = new Intent(MainActivity.this,EntriManualActivity.class);
                             i.putExtra("nopol",no_pol);
                             startActivity(i);
                         }
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                    }
+                });
+    }
+
+    /*ijinkan masuk*/
+    public void ijinkan_masuk(String no_pol)
+    {
+        AndroidNetworking.post(StringConfig.IJINKAN_RUTIN)
+                .addBodyParameter("no_pol", no_pol)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // do anything with response
+                        Toast.makeText(getApplicationContext(),response.optString("message"),Toast.LENGTH_LONG).show();
                     }
                     @Override
                     public void onError(ANError error) {
@@ -199,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         final String no_pol   = response.optString("no_pol");
                         if (success.equals("1")){
                             al.setTitle("Kunjungan Selesai")
-                                    .setIcon(R.mipmap.ic_launcher)
+                                    .setIcon(R.mipmap.ic_icon)
                                     .setMessage(response.optString("message"))
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
@@ -211,12 +257,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     .show();
                         }else if(success.equals("2")){
                             al.setTitle("Kunjungan Baru")
-                                    .setIcon(R.mipmap.ic_launcher)
+                                    .setIcon(R.mipmap.ic_icon)
                                     .setMessage(
                                             "\nNomor Polisi : "+ response.optString("no_pol") +
                                                     "\nPemilik/Driver : "+response.optString("pemilik")+
                                                     "\n\npesan :\n"+response.optString("message"))
-                                    .setIcon(R.mipmap.ic_launcher)
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
@@ -227,9 +272,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     .show();
                         }else{
                             al.setTitle("Detil Kendaraan")
-                                    .setIcon(R.mipmap.ic_launcher)
+                                    .setIcon(R.mipmap.ic_icon)
                                     .setMessage(response.optString("message"))
-                                    .setIcon(R.mipmap.ic_launcher)
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
