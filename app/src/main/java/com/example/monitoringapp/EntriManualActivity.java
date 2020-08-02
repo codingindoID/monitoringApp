@@ -27,7 +27,7 @@ public class EntriManualActivity extends AppCompatActivity {
 
     RelativeLayout simpan;
     TextView t_nopol;
-    EditText e_nama;
+    EditText e_nama,et_perusahaan;
     ImageView back;
     AlertDialog.Builder dialog;
     @Override
@@ -35,10 +35,11 @@ public class EntriManualActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entri_manual);
 
-        t_nopol = findViewById(R.id.tv_nopol);
-        back = findViewById(R.id.back);
-        simpan = findViewById(R.id.simpan);
-        e_nama = findViewById(R.id.et_nama);
+        t_nopol             = findViewById(R.id.tv_nopol);
+        back                = findViewById(R.id.back);
+        simpan              = findViewById(R.id.simpan);
+        e_nama              = findViewById(R.id.et_nama);
+        et_perusahaan       = findViewById(R.id.et_perusahaan);
 
         Intent i = getIntent();
         final String nopol = i.getStringExtra("nopol");
@@ -57,18 +58,20 @@ public class EntriManualActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String str_nama = e_nama.getText().toString().toUpperCase();
-                ijinkan(nopol,str_nama);
+                String str_per  = et_perusahaan.getText().toString().toUpperCase();
+                ijinkan(nopol,str_nama,str_per);
                 finish();
                 //onSimpan(nopol, str_nama);
             }
         });
     }
 
-    public void ijinkan(String no_pol,String driver)
+    public void ijinkan(String no_pol,String driver,String perusahaan)
     {
         AndroidNetworking.post(StringConfig.MASUK_MANUAL)
                 .addBodyParameter("no_pol", no_pol)
                 .addBodyParameter("driver", driver)
+                .addBodyParameter("perusahaan", perusahaan)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
