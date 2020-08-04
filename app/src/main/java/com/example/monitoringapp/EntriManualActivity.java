@@ -27,7 +27,7 @@ public class EntriManualActivity extends AppCompatActivity {
 
     RelativeLayout simpan;
     TextView t_nopol;
-    EditText e_nama,et_perusahaan;
+    EditText e_nama,et_perusahaan,et_ID;
     ImageView back;
     AlertDialog.Builder dialog;
     @Override
@@ -39,6 +39,7 @@ public class EntriManualActivity extends AppCompatActivity {
         back                = findViewById(R.id.back);
         simpan              = findViewById(R.id.simpan);
         e_nama              = findViewById(R.id.et_nama);
+        et_ID               = findViewById(R.id.et_ID);
         et_perusahaan       = findViewById(R.id.et_perusahaan);
 
         Intent i = getIntent();
@@ -59,18 +60,20 @@ public class EntriManualActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String str_nama = e_nama.getText().toString().toUpperCase();
                 String str_per  = et_perusahaan.getText().toString().toUpperCase();
-                ijinkan(nopol,str_nama,str_per);
+                String str_id   = et_ID.getText().toString().toUpperCase();
+                ijinkan(nopol,str_nama,str_per,str_id);
                 finish();
                 //onSimpan(nopol, str_nama);
             }
         });
     }
 
-    public void ijinkan(String no_pol,String driver,String perusahaan)
+    public void ijinkan(String no_pol,String driver,String perusahaan,String sim)
     {
         AndroidNetworking.post(StringConfig.MASUK_MANUAL)
                 .addBodyParameter("no_pol", no_pol)
                 .addBodyParameter("driver", driver)
+                .addBodyParameter("sim", sim)
                 .addBodyParameter("perusahaan", perusahaan)
                 .setPriority(Priority.MEDIUM)
                 .build()
